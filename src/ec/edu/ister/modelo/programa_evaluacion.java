@@ -17,31 +17,28 @@ import javax.swing.JOptionPane;
  */
 public class programa_evaluacion {
     
-    public static void llenararreglo() {
+    private Integer arrayTemperaturas[];
     
-    //Llenar un arreglo de 10 elementos con numeros pandemicos.
-    int array[]=new int[10];//se crea un arreglo entero
-    for (int i=0; i<array.length; i++){//se crea un bucle for con variable inicial
-        array[i]=(int)(Math.random()*10);//se da valores random al arreglo por medio de math.random
-       JOptionPane.showMessageDialog(null, array[i]);    //se imprime por ventana dicho arreglo
+    public void llenararreglo(){
+        arrayTemperaturas=new Integer[10];
+        for(int i=0;i<arrayTemperaturas.length;i++){
+            arrayTemperaturas[i]=(int)(Math.random()*10);
+        }
     }
     
-}
-    
-     public static void Imprimir(){
-         //Imprimir el arreglo arrayTemperaturas almacenandolos previamente en el String
-            
-        String[] arrayTemperaturas={"Hola","Soy","Un","Arreglo","De","Temperaturas"};//se crea un arreglo tipo string
-        String acu="";//se otorga un acumulador
-        for (int i=0; i>arrayTemperaturas.length; i++){//se crea un bucle for usando .length
-             acu+=arrayTemperaturas[i]+" ";//se le otorga los valores del arreglo al acumulador
-             
-         }
-         JOptionPane.showMessageDialog(null, acu);//se imprime por ventana el acumulador
-             
-     }
+     public void Imprimir(){
+        String acu="";
+        for (int i = 0; i < arrayTemperaturas.length; i++) {
+            acu+=""+arrayTemperaturas[i];
+        }
+        JOptionPane.showMessageDialog(null,acu);
+    }
      
-     public static void ordenar(){
+     public void Imprimir1(){
+        JOptionPane.showMessageDialog(null,Arrays.toString(arrayTemperaturas));
+    }
+     
+     public void ordenar(){
          //ordenar el arreglo en orden ascendente utilizando una clase del JDK de java
          int array[]=new int[10];//se crea un arreglo
     for (int i=0; i<array.length; i++){//se cre un bucle for usando .length
@@ -51,20 +48,14 @@ public class programa_evaluacion {
      }
      }
      
-     public static void maximo(){
-         //retornar el maximo de un arreglo previamente convertido en un arraylist
-              int array[]=new int[10];
-    for (int i=0; i<array.length; i++){
-        array[i]=(int)(Math.random()*10);
-         List<Integer>arr=new ArrayList();//se transforma un arreglo en lista
-        
-         arr=Arrays.asList(array[i]);//se le asigna a una variable el arreglo
-         Integer max=Collections.max(arr);//se utiliza la opcion collection maximo para encontrar el valor maximo del arreglo
-         JOptionPane.showMessageDialog(null, max);}
-         
-     }
+     public void maximo(){
+        List<Integer> arr=new ArrayList();
+        arr=Arrays.asList(arrayTemperaturas);
+        Integer max= Collections.max(arr);
+        JOptionPane.showMessageDialog(null,max);
+    }
      
-     public static void menu(){
+     public void menu(){
     
     int op;
     
@@ -74,9 +65,10 @@ public class programa_evaluacion {
                + "MENU OPCIONES\n\n"
                + "1) Llenar el arreglo\n"
                + "2) Imprimir arreglo String\n"
-               + "3) Ordenar arreglo\n"
-               + "4) Hallar el maximo de un arreglo\n"
-               + "5) SALIR--->\n\n"));
+               + "3) Imprimir arreglo con JOptionPane y un toString\n"
+               + "4) Ordenar arreglo\n"
+               + "5) Hallar el maximo de un arreglo\n"
+               + "6) SALIR--->\n\n"));
        
         
        switch(op){
@@ -88,13 +80,20 @@ public class programa_evaluacion {
                Imprimir();
                break;
            case 3:
-               ordenar();
+               Imprimir1();
                break;
            case 4:
+               ordenar();
+               break;
+           case 5:
                maximo();
+               break;
+           
+           case 6:
+               System.exit(0);
                break;
                 
        }
-    } while (op!=5);
+    } while (op!=6);
 }
 }

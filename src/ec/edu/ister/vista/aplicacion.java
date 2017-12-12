@@ -14,11 +14,7 @@ import ec.edu.ister.modelo.programa_evaluacion;
 public class aplicacion {
     
    public static void main(String[] args) {
-       programa_evaluacion.menu();
-        programa_evaluacion.llenararreglo();
-        programa_evaluacion.Imprimir();
-        programa_evaluacion.maximo();
-        programa_evaluacion.ordenar();
-        
-   }
+       programa_evaluacion obj=new programa_evaluacion();
+        obj.menu();
+    }
 }
